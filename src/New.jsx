@@ -5,7 +5,7 @@ const FileList = () => {
   const [editedFiles, setEditedFiles] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5003/files")
+    fetch("https://admin-backend-c1q6.onrender.com/files")
       .then((response) => response.json())
       .then((data) => {
         setFiles(data);
@@ -32,7 +32,7 @@ const FileList = () => {
 
   const handleAdd = (file) => {
     const updatedFile = { ...file, ...editedFiles[file._id] };
-    fetch("http://localhost:5003/add", {
+    fetch("https://admin-backend-c1q6.onrender.com/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedFile),
@@ -46,7 +46,7 @@ const FileList = () => {
   };
 
   const handleRemove = (_id) => {
-    fetch(`http://localhost:5003/remove/${_id}`, {
+    fetch(`https://admin-backend-c1q6.onrender.com/remove/${_id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
