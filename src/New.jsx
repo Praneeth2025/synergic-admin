@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./FileList.css";
 
 const FileList = () => {
   const [files, setFiles] = useState([]);
@@ -9,7 +10,6 @@ const FileList = () => {
       .then((response) => response.json())
       .then((data) => {
         setFiles(data);
-        // Initialize editable fields
         const initialEdits = {};
         data.forEach((file) => {
           initialEdits[file._id] = {
@@ -60,41 +60,50 @@ const FileList = () => {
   return (
     <div>
       <h1 className="header">Uploaded Files</h1>
-      <ul>
-        {files.map((file) => (
-          <li key={file._id} className="liner">
-            <a href={file.driveLink} target="_blank" rel="noopener noreferrer">
-              {file.filename}
-            </a>
-            <div>
-              <label>Filename:</label>
-              <input
-                type="text"
-                value={editedFiles[file._id]?.filename || ""}
-                onChange={(e) => handleEditChange(file._id, "filename", e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Folder (Subject):</label>
-              <input
-                type="text"
-                value={editedFiles[file._id]?.subject || ""}
-                onChange={(e) => handleEditChange(file._id, "subject", e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Subfolder (Year of Study):</label>
-              <input
-                type="text"
-                value={editedFiles[file._id]?.yearOfStudy || ""}
-                onChange={(e) => handleEditChange(file._id, "yearOfStudy", e.target.value)}
-              />
-            </div>
-            <button className="btn_1" onClick={() => handleAdd(file)}>+ Add</button>
-            <button className="btn_2" onClick={() => handleRemove(file._id)}>- Remove</button>
-          </li>
-        ))}
-      </ul>
+      <table className="container">
+        <thead>
+          <tr>
+            <th>Filename</th>
+            <th>Subject</th>
+            <th>Year of Study</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {files.map((file) => (
+            <tr key={file._id}>
+              <td>
+                <a href={file.driveLink} target="_blank" rel="noopener noreferrer">
+                  {file.filename}
+                </a>
+                <input
+                  type="text"
+                  value={editedFiles[file._id]?.filename || ""}
+                  onChange={(e) => handleEditChange(file._id, "filename", e.target.value)}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  value={editedFiles[file._id]?.subject || ""}
+                  onChange={(e) => handleEditChange(file._id, "subject", e.target.value)}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  value={editedFiles[file._id]?.yearOfStudy || ""}
+                  onChange={(e) => handleEditChange(file._id, "yearOfStudy", e.target.value)}
+                />
+              </td>
+              <td>
+                <button className="btn_1" onClick={() => handleAdd(file)}>+ Add</button>
+                <button className="btn_2" onClick={() => handleRemove(file._id)}>- Remove</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

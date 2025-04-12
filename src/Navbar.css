@@ -1,0 +1,36 @@
+*
+{
+    font-family: "Montserrat", sans-serif;
+  
+  list-style-type: none;
+}
+.buttons{
+    font-weight: 400;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    width:65%;
+    cursor: pointer;
+    font-size: 20px;
+    align-items: center;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+}
+.color{
+    color:#CFB42F;
+}
+.logout_btn{
+    font-weight: 400;
+    width: 175px;
+    height:50px;
+    border-radius: 30px;
+    border:0;
+    font-family: "DM Sans", serif;
+    font-weight: 500;
+    background-color: #c22820;
+    font-size: 20px;
+}
