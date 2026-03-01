@@ -1,0 +1,574 @@
+[
+  {
+    "name": "Digital Control Systems",
+    "code": "EE4L005"
+  },
+  {
+    "name": "Power System Operation and Control",
+    "code": "EE3L012"
+  },
+  {
+    "name": "Classical Mechanics and Special Relativity",
+    "code": "EP2L002"
+  },
+  {
+    "name": "Chemical Metallurgy",
+    "code": "ML3L005"
+  },
+  {
+    "name": "Environmental Science, Technology and Management",
+    "code": "ID3L003"
+  },
+  {
+    "name": "Physics of Atomic and Molecules",
+    "code": "EP3L003"
+  },
+  {
+    "name": "Heat Transfer",
+    "code": "ME3L001"
+  },
+  {
+    "name": "electrical technology",
+    "code": "EE1L001"
+  },
+  {
+    "name": "Theory of Machines - II",
+    "code": "ME2L005"
+  },
+  {
+    "name": "Vibrations",
+    "code": "ME6L001"
+  },
+  {
+    "name": "physics",
+    "code": "PH1L001"
+  },
+  {
+    "name": "Systems & Control",
+    "code": "ME3L004"
+  },
+  {
+    "name": "Electrical Power Transmission and Distribution",
+    "code": "EE3L007"
+  },
+  {
+    "name": "Power Electronics",
+    "code": "EE3L004"
+  },
+  {
+    "name": "Electromagnetic Waves and Radiating Systems",
+    "code": "EC3L005"
+  },
+  {
+    "name": "Process Control and Instrumentation Laboratory",
+    "code": "ML4P002"
+  },
+  {
+    "name": "Theory of Machines - I",
+    "code": "ME2L001"
+  },
+  {
+    "name": "Electric Machines",
+    "code": "EE2L003"
+  },
+  {
+    "name": "mechanics",
+    "code": "ME1L001"
+  },
+  {
+    "name": "Renewable Energy Systems",
+    "code": "EE4L006"
+  },
+  {
+    "name": "RF and Microwave Engineering",
+    "code": "EC4L006"
+  },
+  {
+    "name": "Mineral Processing",
+    "code": "ML3L001"
+  },
+  {
+    "name": "Thermal Physics",
+    "code": "EP2L003"
+  },
+  {
+    "name": "Physical Metallurgy Laboratory",
+    "code": "ML2P003"
+  },
+  {
+    "name": "VLSI Design",
+    "code": "EC3L009"
+  },
+  {
+    "name": "Surveying",
+    "code": "CE2L002"
+  },
+  {
+    "name": "Introduction to Material Science and Engineering",
+    "code": "ID2L001"
+  },
+  {
+    "name": "Materials Characterization Laboratory - II",
+    "code": "ML4P001"
+  },
+  {
+    "name": "Basic Electronics",
+    "code": "-"
+  },
+  {
+    "name": "Water Resources Engineering Laboratory",
+    "code": "CE3P003"
+  },
+  {
+    "name": "Fluid Mechanics",
+    "code": "ME2L002"
+  },
+  {
+    "name": "Introduction to Civil Engineering and Construction Materials",
+    "code": "CE2L003"
+  },
+  {
+    "name": "Seminar",
+    "code": "ML2S001"
+  },
+  {
+    "name": "Digital Electronic Circuits",
+    "code": "EC2L004"
+  },
+  {
+    "name": "Design of Reinforced Concrete Structures",
+    "code": "CE3L001"
+  },
+  {
+    "name": "Advanced Power Electronic Converters",
+    "code": "EE6L053"
+  },
+  {
+    "name": "Materials Processing Laboratory",
+    "code": "ML2P002"
+  },
+  {
+    "name": "Operating Systems",
+    "code": "CS3L005"
+  },
+  {
+    "name": "Industrial Training Defence",
+    "code": "CE4T001"
+  },
+  {
+    "name": "Project - I",
+    "code": "ML4D001"
+  },
+  {
+    "name": "Measurement and Instrumentation",
+    "code": "EE3L010"
+  },
+  {
+    "name": "Math III",
+    "code": "MA2L003"
+  },
+  {
+    "name": "Deformation and Mechanical Working of Materials",
+    "code": "ML3L008"
+  },
+  {
+    "name": "Corrosion and Surface Engineering",
+    "code": "ML3L002"
+  },
+  {
+    "name": "Environmental Science Technology and Management",
+    "code": "ID2L003"
+  },
+  {
+    "name": "Project - Part 2",
+    "code": "CE4D002"
+  },
+  {
+    "name": "Electromagnetic Field Theory",
+    "code": "EE3L011"
+  },
+  {
+    "name": "Analog Communication",
+    "code": "EC2L005"
+  },
+  {
+    "name": "Numerical Techniques and Computational Physics",
+    "code": "EP2L007"
+  },
+  {
+    "name": "Formal Languages and Automata Theory",
+    "code": "CS3L001"
+  },
+  {
+    "name": "Design of Machine Elements",
+    "code": "ME3L002"
+  },
+  {
+    "name": "IC Engines",
+    "code": "ME3L005"
+  },
+  {
+    "name": "Machine Tool & Machining",
+    "code": "ME3L007"
+  },
+  {
+    "name": "Introduction to Materials Laboratory",
+    "code": "ML2P001"
+  },
+  {
+    "name": "Water and Wastewater Engineering Laboratory",
+    "code": "CE3P006"
+  },
+  {
+    "name": "Elements of Electroceramics",
+    "code": "ML4L002"
+  },
+  {
+    "name": "Water and Wastewater Engineering",
+    "code": "CE3L006"
+  },
+  {
+    "name": "Project - II",
+    "code": "ML4D002"
+  },
+  {
+    "name": "Transform Calculus",
+    "code": "MA2L005"
+  },
+  {
+    "name": "Thermodynamics of Materials",
+    "code": "ML2L002"
+  },
+  {
+    "name": "Project - Part 1",
+    "code": "CE4D001"
+  },
+  {
+    "name": "Combinatory, Probability and Statistics",
+    "code": "MA2L006"
+  },
+  {
+    "name": "Advanced Structural Analysis",
+    "code": "CE6L302"
+  },
+  {
+    "name": "Electromagnetic Theory and Applications",
+    "code": "EP2L004"
+  },
+  {
+    "name": "Foundation Engineering",
+    "code": "CE3L005"
+  },
+  {
+    "name": "Mechanical Properties and Testing of Materials",
+    "code": "ML3L003"
+  },
+  {
+    "name": "Structural Design and Detailing",
+    "code": "CE3P005"
+  },
+  {
+    "name": "Applied Optics",
+    "code": "EP3L001"
+  },
+  {
+    "name": "Phase Transformation of Materials",
+    "code": "ML3L004"
+  },
+  {
+    "name": "Physical Metallurgy",
+    "code": "ML2L005"
+  },
+  {
+    "name": "Polymers and Nanocomposites",
+    "code": "ML4L003"
+  },
+  {
+    "name": "Transport Phenomena and Kinetics of Metallurgical Processes",
+    "code": "ML2L004"
+  },
+  {
+    "name": "Casting, Welding and Forming",
+    "code": "ME3L003"
+  },
+  {
+    "name": "Communication Networks and Switching",
+    "code": "EC4L005"
+  },
+  {
+    "name": "Digital Electronics and Microprocessor",
+    "code": "EC2L006"
+  },
+  {
+    "name": "Digital Signal Processing",
+    "code": "EC3L003"
+  },
+  {
+    "name": "Control Systems",
+    "code": "EE3L003"
+  },
+  {
+    "name": "Materials Characterization",
+    "code": "ML3L006"
+  },
+  {
+    "name": "Advanced Solid Mechanics",
+    "code": "CE6L303"
+  },
+  {
+    "name": "Thermodynamics of Materials Laboratory",
+    "code": "ML2P004"
+  },
+  {
+    "name": "Thermodynamics",
+    "code": "ME2L003"
+  },
+  {
+    "name": "Structural Analysis",
+    "code": "CE2L004"
+  },
+  {
+    "name": "Mathematical Methods for Physics",
+    "code": "EP2L001"
+  },
+  {
+    "name": "Materials Characterization Laboratory - I",
+    "code": "ML3P002"
+  },
+  {
+    "name": "CAD Laboratory",
+    "code": "CE4P001"
+  },
+  {
+    "name": "Basic Electronics Laboratory",
+    "code": "EC2P005"
+  },
+  {
+    "name": "Microprocessor and Microcontroller",
+    "code": "EC3L007"
+  },
+  {
+    "name": "Refrigeration & Air-Conditioning",
+    "code": "ME3L006"
+  },
+  {
+    "name": "Dynamics of Structures",
+    "code": "CE6L301"
+  },
+  {
+    "name": "Statistical Physics",
+    "code": "EP2L006"
+  },
+  {
+    "name": "Introduction to Electronics",
+    "code": "EC2L001"
+  },
+  {
+    "name": "Database Systems",
+    "code": "CS3L003"
+  },
+  {
+    "name": "Simulation and Modeling Laboratory",
+    "code": "ML3P003"
+  },
+  {
+    "name": "chemistry",
+    "code": "CY1L001"
+  },
+  {
+    "name": "Project Seminar",
+    "code": "CE2S001"
+  },
+  {
+    "name": "Compiler Design",
+    "code": "CS4L001"
+  },
+  {
+    "name": "Power Plant Engineering",
+    "code": "ME3L008"
+  },
+  {
+    "name": "Industrial Training Defense",
+    "code": "ML4T001"
+  },
+  {
+    "name": "Signals & Systems",
+    "code": "EC2L002"
+  },
+  {
+    "name": "Advanced Solid Mechanics",
+    "code": "ME6L002"
+  },
+  {
+    "name": "Water Resources Engineering",
+    "code": "CE3L003"
+  },
+  {
+    "name": "Solid Mechanics",
+    "code": "CE2L001"
+  },
+  {
+    "name": "Mathematics",
+    "code": "MA1L001"
+  },
+  {
+    "name": "Data Structures",
+    "code": "CS2L004"
+  },
+  {
+    "name": "Introduction to Bio Science and Technology",
+    "code": "ID2L002"
+  },
+  {
+    "name": "Design of Special Structures",
+    "code": "CE6P303"
+  },
+  {
+    "name": "Numerical Methods",
+    "code": "MA2L007"
+  },
+  {
+    "name": "Advanced Machine Drives",
+    "code": "EE6L055"
+  },
+  {
+    "name": "Transportation Engineering",
+    "code": "CE2L006"
+  },
+  {
+    "name": "Elements of Quantum Mechanics",
+    "code": "EP2L005"
+  },
+  {
+    "name": "Switched Mode Power Conversion",
+    "code": "EE6L051"
+  },
+  {
+    "name": "Structural Engineering Laboratory",
+    "code": "CE3P001"
+  },
+  {
+    "name": "Materials Processing",
+    "code": "ML2L003"
+  },
+  {
+    "name": "Mathematics - 2",
+    "code": "MA1L002"
+  },
+  {
+    "name": "Solid State Physics",
+    "code": "EP3L002"
+  },
+  {
+    "name": "Design and Analysis of Algorithms",
+    "code": "CS2L002"
+  },
+  {
+    "name": "Introduction to Nuclear and Particle Physics",
+    "code": "EP3L006"
+  },
+  {
+    "name": "Surveying Practice",
+    "code": "CE2P002"
+  },
+  {
+    "name": "Experimental Techniques in Physics",
+    "code": "EP3L005"
+  },
+  {
+    "name": "Transportation Engineering Laboratory",
+    "code": "CE2P001"
+  },
+  {
+    "name": "Mechanics of Solids",
+    "code": "ME2L004"
+  },
+  {
+    "name": "Iron and Steel Making",
+    "code": "ML3L007"
+  },
+  {
+    "name": "Introduction to Simulation and Modeling in Materials",
+    "code": "ML3L009"
+  },
+  {
+    "name": "Network Theory",
+    "code": "EE2L001"
+  },
+  {
+    "name": "Design of Steel Structures",
+    "code": "CE3L004"
+  },
+  {
+    "name": "Grid Integration of Renewable Energy Systems",
+    "code": "EE6L013"
+  },
+  {
+    "name": "Theory and Analysis of Electric Drives",
+    "code": "EE6L052"
+  },
+  {
+    "name": "introduction to programming and data structures",
+    "code": "CS1L001"
+  },
+  {
+    "name": "Computer Networks",
+    "code": "CS3L006"
+  },
+  {
+    "name": "engineering drawing and graphics",
+    "code": "CE1P001"
+  },
+  {
+    "name": "Advanced Quantum Mechanics",
+    "code": "EP3L004"
+  },
+  {
+    "name": "Mechanical Testing & Working Laboratory",
+    "code": "ML3P001"
+  },
+  {
+    "name": "Digital Communication",
+    "code": "EC3L006"
+  },
+  {
+    "name": "Soil Mechanics Laboratory",
+    "code": "CE3P002"
+  },
+  {
+    "name": "english",
+    "code": "HS1L002"
+  },
+  {
+    "name": "Discrete Structures",
+    "code": "CS2L001"
+  },
+  {
+    "name": "Computer Organization and Architecture",
+    "code": "CS3L002"
+  },
+  {
+    "name": "Partial Differential Equations",
+    "code": "MA2L004"
+  },
+  {
+    "name": "Soil Mechanics",
+    "code": "CE3L002"
+  },
+  {
+    "name": "Dynamics and Control of Mechanical Systems",
+    "code": "ME6L051"
+  },
+  {
+    "name": "Hydraulics",
+    "code": "CE2L005"
+  },
+  {
+    "name": "Civil Engineering Drawing and Estimation",
+    "code": "CE3P004"
+  },
+  {
+    "name": "Light Metals and Alloys",
+    "code": "ML4L001"
+  }
+]

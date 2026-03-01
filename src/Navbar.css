@@ -1,36 +1,104 @@
-*
-{
-    font-family: "Montserrat", sans-serif;
-  
-  list-style-type: none;
+.synergic-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background-color: transparent; /* Assuming a white page background */
+  font-family: 'Inter', sans-serif;
 }
-.buttons{
-    font-weight: 400;
-    display: flex;
-    justify-content: space-around;
-    list-style-type: none;
-    width:65%;
-    cursor: pointer;
-    font-size: 20px;
-    align-items: center;
+
+/* Logo Styling */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    height: 100px;
-    align-items: center;
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
 }
-.color{
-    color:#CFB42F;
+
+.logo-icon {
+  width: 28px;
+  height: 28px;
 }
-.logout_btn{
-    font-weight: 400;
-    width: 175px;
-    height:50px;
-    border-radius: 30px;
-    border:0;
-    font-family: "DM Sans", serif;
-    font-weight: 500;
-    background-color: #c22820;
-    font-size: 20px;
+
+/* Central Pill Navigation */
+.nav-pill-container {
+  display: flex;
+  background-color: #2a2a2a; /* Dark gray/black container */
+  padding: 6px;
+  border-radius: 50px;
+  gap: 5px;
+  margin-left:12%;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  border-radius: 15px;
+  border: none;
+  background: transparent;
+  margin: 5px 25px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Active State (Lime Green) */
+.nav-item.active {
+  background-color: #d4f05c; /* Lime green from your screenshot */
+  color: #000000;
+}
+
+.nav-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Filter to turn icons black when active on lime background */
+.icon-dark {
+  filter: brightness(0);
+}
+
+.icon-light {
+  filter: brightness(0) invert(1);
+}
+
+/* Right Actions */
+.nav-actions {
+  display: flex;
+  gap: 15px;
+  margin-right:5%;
+}
+
+.action-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid #e0e0e0;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.action-btn img {
+  width: 25px;
+  height: 25px;
+}
+
+
+.profile-btn {
+  background-color: #000000; /* Light gray from Notion-style screenshot */
+  border: none;
 }

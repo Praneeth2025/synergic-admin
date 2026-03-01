@@ -1,0 +1,254 @@
+/* refined aesthetics for Duplicate Handler */
+.dh-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px;
+    min-height: 80vh;
+}
+
+/* Header */
+.dh-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.dh-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+}
+
+.dh-header p {
+    color: #666;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* Grid Layout for Cards */
+.dh-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Card Styling */
+.dh-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dh-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.dh-card-header {
+    background: #C6EF4E;
+    padding: 16px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dh-group-title {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.dh-count-badge {
+    background: #ffe0e0;
+    color: #d12e2e;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+/* Table Styling */
+.dh-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dh-table th {
+    text-align: left;
+    padding: 12px 24px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    border-bottom: 1px solid #f0f0f0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dh-table td {
+    padding: 16px 24px;
+    border-bottom: 1px solid #f9f9f9;
+    font-size: 14px;
+    color: #333;
+    vertical-align: middle;
+}
+
+.dh-table tr:last-child td {
+    border-bottom: none;
+}
+
+.dh-file-link {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dh-file-link:hover {
+    text-decoration: underline;
+    color: #000;
+}
+
+.dh-date {
+    color: #666;
+    font-size: 13px;
+}
+
+.dh-user {
+    font-family: monospace;
+    color: #555;
+    background: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.action-col {
+    text-align: right;
+}
+
+/* Delete Button */
+.dh-delete-btn {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    color: #d12e2e;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dh-delete-btn:hover {
+    background: #ffe0e0;
+    border-color: #ffe0e0;
+}
+
+/* Empty State */
+.dh-empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    background: #fafafa;
+    border-radius: 12px;
+    border: 2px dashed #e0e0e0;
+}
+
+.dh-empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.dh-empty-state h2 {
+    font-size: 20px;
+    margin: 0 0 8px 0;
+    color: #333;
+}
+
+/* Modal */
+.dh-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.dh-modal {
+    background: #fff;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f0f0f0;
+    padding: 30px;
+    animation: popIn 0.2s ease-out;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.dh-modal-header h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.dh-modal-body p {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.dh-modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.dh-btn-cancel {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+}
+
+.dh-btn-confirm {
+    background: #000;
+    border: 1px solid #000;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+}
+
+.dh-btn-confirm:hover {
+    background: #d12e2e;
+    border-color: #d12e2e;
+}
