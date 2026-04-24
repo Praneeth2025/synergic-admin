@@ -1,0 +1,130 @@
+.vh-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.vh-header {
+  margin-bottom: 40px;
+}
+
+.vh-header h1 {
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.vh-header p {
+  color: #666;
+}
+
+/* Card Styling similar to Duplicate Handler */
+.vh-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 24px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.vh-card-header {
+  background: #f8f9fa;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.vh-group-title {
+  font-weight: 600;
+  color: #2e7d32; /* Green tone for verification context */
+  font-size: 0.95rem;
+}
+
+.vh-contributor-tag {
+  font-size: 0.8rem;
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.vh-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vh-table th {
+  text-align: left;
+  padding: 12px 24px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 0.05em;
+}
+
+.vh-table td {
+  padding: 16px 24px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.vh-file-link {
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.vh-file-link:hover {
+  text-decoration: underline;
+}
+
+.vh-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Action Buttons */
+.vh-button-group {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.vh-btn-accept {
+  background: #c6ff00; /* Matching your theme's yellow-green */
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.vh-btn-deny {
+  background: #fff;
+  border: 1px solid #ff5252;
+  color: #ff5252;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.vh-btn-accept:hover, .vh-btn-deny:hover {
+  opacity: 0.8;
+}
+
+.vh-empty-state {
+  text-align: center;
+  padding: 100px 0;
+  color: #999;
+}
+
+.vh-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}

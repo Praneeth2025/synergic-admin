@@ -1,14 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './AcademicOverview.css';
 
 const AcademicOverview = () => {
   const [data, setData] = useState(null);
   const [uploadedPapers, setUploadedPapers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeProg, setActiveProg] = useState("");
-  const [activeBranch, setActiveBranch] = useState("");
+  const [activeProg, setActiveProg] = useState("BTech"); // Default to BTech
+  const [activeBranch, setActiveBranch] = useState("CSE");
 
-  const academicYears = ["2022-2023", "2023-2024", "2024-2025", "2025-2026"];
+  // Dynamic Year Logic
+  const academicYears = useMemo(() => {
+    const startYear = 2022;
+    const now = new Date();
+    const endYear = now.getMonth() >= 6 ? now.getFullYear() + 1 : now.getFullYear();
+    const years = [];
+    for (let y = startYear; y < endYear; y++) {
+      years.push(`${y}-${y + 1}`);
+    }
+    return years;
+  }, []);
 
   useEffect(() => {
     const fetchAllData = async () => {
@@ -24,11 +34,12 @@ const AcademicOverview = () => {
         setData(structureJson);
         setUploadedPapers(papersJson);
 
-        // Auto-select first available program (BTech/MTech)
-        const firstProg = Object.keys(structureJson).find(k => k !== "_id");
-        if (firstProg) {
-          setActiveProg(firstProg);
-          const firstBranch = Object.keys(structureJson[firstProg])[0];
+        // Auto-detect first available program and branch
+        const availableProgs = Object.keys(structureJson).filter(k => k !== "_id");
+        if (availableProgs.length > 0) {
+          const defaultProg = availableProgs.includes("BTech") ? "BTech" : availableProgs[0];
+          setActiveProg(defaultProg);
+          const firstBranch = Object.keys(structureJson[defaultProg])[0];
           setActiveBranch(firstBranch);
         }
       } catch (err) {
@@ -40,33 +51,25 @@ const AcademicOverview = () => {
     fetchAllData();
   }, []);
 
-  // --- SAFE MATCHING LOGIC ---
   const isPaperUploaded = (subjectName, year, type) => {
     if (!uploadedPapers || !Array.isArray(uploadedPapers)) return false;
-
+    const cleanSubject = (subjectName || "").toLowerCase().replace(/[^a-z0-9]/g, '');
+    
     return uploadedPapers.some(paper => {
-      // Use optional chaining and fallbacks to prevent .toLowerCase() errors
-      const cleanSubject = (subjectName || "").toLowerCase().replace(/[^a-z0-9]/g, '');
       const cleanPaperSub = (paper?.subject || "").toLowerCase().replace(/[^a-z0-9]/g, '');
-
-      const cleanType = (type || "").toLowerCase();
-      const paperType = (paper?.type || "").toLowerCase();
-
-      // Match if subject is contained, year is exact, and type matches (mid/end)
-      const isSubMatch = cleanPaperSub.includes(cleanSubject) && cleanSubject !== "";
-      const isYearMatch = paper?.yearOfStudy === year;
-      const isTypeMatch = paperType.includes(cleanType);
-
-      return isSubMatch && isYearMatch && isTypeMatch;
+      return cleanPaperSub.includes(cleanSubject) && 
+             cleanSubject !== "" && 
+             paper?.yearOfStudy === year && 
+             (paper?.type || "").toLowerCase().includes(type.toLowerCase());
     });
   };
 
   if (loading) return <div className="loading-screen">Syncing Archive...</div>;
-  if (!data) return <div className="error-screen">Server connection failed.</div>;
+  if (!data || !data[activeProg]) return <div className="error-screen">No data found for {activeProg}.</div>;
 
   const programs = Object.keys(data).filter(key => key !== "_id");
   const branches = Object.keys(data[activeProg] || {});
-  const branchData = data[activeProg]?.[activeBranch] || {};
+  const branchData = data[activeProg][activeBranch] || {};
 
   return (
     <div className="notion-layout">
@@ -125,42 +128,86 @@ const AcademicOverview = () => {
             </tr>
           </thead>
           <tbody>
-            {Object.entries(branchData).map(([semName, subjects]) => (
-              <React.Fragment key={semName}>
-                <tr className="semester-divider">
-                  <td colSpan={academicYears.length * 2 + 1}>
-                    {semName.replace(/_/g, ' ')}
-                  </td>
-                </tr>
-                {subjects?.map((sub, i) => (
-                  <tr key={(sub.code || 's') + i}>
-                    <td className="subject-cell sticky-col">
-                      <div className="sub-name">{sub.name}</div>
-                      <div className="sub-code">{sub.code}</div>
+  {Object.entries(branchData).map(([semName, subjects]) => (
+    <React.Fragment key={semName}>
+      <tr className="semester-divider">
+        <td colSpan={academicYears.length * 2 + 1}>
+          {semName.replace(/_/g, ' ')}
+        </td>
+      </tr>
+      
+      {subjects?.map((sub, i) => {
+        // Determine if this subject has sub-options (Electives)
+        const hasOptions = sub.options && Array.isArray(sub.options) && sub.options.length > 0;
+
+        return (
+          <React.Fragment key={`${sub.name}-${i}`}>
+            {/* 1. Main Subject Row */}
+            <tr className={hasOptions ? "elective-parent-row" : ""}>
+              <td className="subject-cell sticky-col">
+                <div className="sub-name">{sub.name}</div>
+                <div className="sub-code">{sub.code || "Elective Group"}</div>
+              </td>
+              
+              {/* If it has options, we don't show checkmarks on the parent row itself */}
+              {!hasOptions ? (
+                academicYears.map(year => (
+                  <React.Fragment key={year}>
+                    <td className="status-cell">
+                      <div className={`indicator ${isPaperUploaded(sub.name, year, "mid") ? 'verified' : 'empty'}`}>
+                        {isPaperUploaded(sub.name, year, "mid") && "✔"}
+                      </div>
                     </td>
-                    {academicYears.map(year => {
-                      const mid = isPaperUploaded(sub.name, year, "mid");
-                      const end = isPaperUploaded(sub.name, year, "end");
-                      return (
-                        <React.Fragment key={`${sub.code}-${year}`}>
-                          <td className="status-cell">
-                            <div className={`indicator ${mid ? 'verified' : 'empty'}`}>
-                              {mid && "✔"}
-                            </div>
-                          </td>
-                          <td className="status-cell">
-                            <div className={`indicator ${end ? 'verified' : 'empty'}`}>
-                              {end && "✔"}
-                            </div>
-                          </td>
-                        </React.Fragment>
-                      );
-                    })}
-                  </tr>
+                    <td className="status-cell">
+                      <div className={`indicator ${isPaperUploaded(sub.name, year, "end") ? 'verified' : 'empty'}`}>
+                        {isPaperUploaded(sub.name, year, "end") && "✔"}
+                      </div>
+                    </td>
+                  </React.Fragment>
+                ))
+              ) : (
+                <td colSpan={academicYears.length * 2} className="parent-spacer-cell"></td>
+              )}
+            </tr>
+
+            {/* 2. Sub-Subject Rows (The Checklist for Options) */}
+            {hasOptions && sub.options.map((opt, optIdx) => (
+              <tr key={`${opt.code}-${optIdx}`} className="nested-option-row">
+                <td className="subject-cell sticky-col nested-col">
+                  <div className="nested-visual-wrapper">
+                    <div className="dashed-line"></div>
+                    <div className="nested-label-content">
+                      <span className="branch-character">↳</span>
+                      <div className="nested-text-group">
+                        <div className="sub-name small">{opt.name}</div>
+                        <div className="sub-code">{opt.code}</div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                {/* CHECKLIST FOR THE OPTION SUBJECT */}
+                {academicYears.map(year => (
+                  <React.Fragment key={year}>
+                    <td className="status-cell">
+                      <div className={`indicator ${isPaperUploaded(opt.name, year, "mid") ? 'verified' : 'empty'}`}>
+                        {isPaperUploaded(opt.name, year, "mid") && "✔"}
+                      </div>
+                    </td>
+                    <td className="status-cell">
+                      <div className={`indicator ${isPaperUploaded(opt.name, year, "end") ? 'verified' : 'empty'}`}>
+                        {isPaperUploaded(opt.name, year, "end") && "✔"}
+                      </div>
+                    </td>
+                  </React.Fragment>
                 ))}
-              </React.Fragment>
+              </tr>
             ))}
-          </tbody>
+          </React.Fragment>
+        );
+      })}
+    </React.Fragment>
+  ))}
+</tbody>
         </table>
       </div>
     </div>

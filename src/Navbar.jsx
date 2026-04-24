@@ -3,9 +3,9 @@ import './Navbar.css';
 const Navbar = ({ activeTab, setActiveTab }) => {
 
   const navItems = [
-    { name: 'Duplicate Papers', icon: 'https://img.icons8.com/?size=100&id=98618&format=png&color=000000' },
+    { name: 'Upload Requests', icon: 'https://img.icons8.com/?size=100&id=98618&format=png&color=000000' },
     { name: 'Dashboard', icon: 'https://img.icons8.com/?size=100&id=sUJRwjfnGwbJ&format=png&color=000000' },
-    { name: 'Saved', icon: 'https://img.icons8.com/ios/50/ffffff/bookmark-ribbon--v1.png' },
+    { name: 'Subject Management', icon: 'https://img.icons8.com/ios/50/ffffff/bookmark-ribbon--v1.png' },
     { name: 'Contribute', icon: 'https://img.icons8.com/ios/50/ffffff/paper-plane.png' },
   ];
 

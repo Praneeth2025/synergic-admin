@@ -54,3 +54,58 @@ p {
 button:hover{
   cursor: pointer;
 }
+
+
+.content {
+  position: relative;
+  z-index: 10; /* Keeps form and text above the shapes */
+}
+
+/* Base Shape Styles */
+.shape {
+  position: absolute;
+  pointer-events: none; /* Allows clicking through shapes */
+}
+
+/* Bottom Left Blob */
+.shape-left-bottom {
+  bottom: 5%;
+  left: 5%;
+  width: 25px; 
+  height: 25px;
+  background-color: #d4f85c;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Small Center Dot */
+.shape-center-dot {
+  bottom: 20%;
+  left: 35%;
+  width: 30px;
+  height: 30px;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+/* Large Bottom Right Ring/Blob */
+.shape-right-bottom {
+  bottom: -15%;
+  right: -10%;
+  width: 40vw;
+  height: 40vw;
+  border: 4vw solid #d4f85c; /* Using border to create the hollow ring effect */
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .shape-left-bottom {
+    width: 40vw;
+    height: 40vw;
+  }
+  .shape-right-bottom {
+    width: 60vw;
+    height: 60vw;
+    bottom: -20%;
+  }
+}

@@ -194,3 +194,160 @@
   background: #f5f5f5;
   color: transparent;
 }
+
+
+/* Container & Layout */
+.notion-layout {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1a1a1a;
+}
+
+.ao-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
+}
+
+/* Tabs & Pills */
+.ao-tabs { display: flex; background: #f4f4f4; padding: 4px; border-radius: 8px; gap: 4px; }
+.ao-tab-btn { border: none; padding: 6px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; color: #666; background: transparent; }
+.ao-tab-btn.active { background: white; color: black; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+.ao-pill { border: 1px solid #e0e0e0; padding: 6px 14px; border-radius: 20px; cursor: pointer; background: white; color: #666; margin-left: 5px; }
+.ao-pill.selected { background: #d4f05c; border-color: #d4f05c; color: black; font-weight: 600; }
+
+/* Table Styling */
+.ao-grid-wrapper { border: 1px solid #eee; border-radius: 12px; overflow: auto; background: white; }
+.ao-grid { width: 100%; border-collapse: collapse; }
+.ao-grid th { background: #fafafa; padding: 12px; font-size: 11px; color: #888; border-bottom: 1px solid #eee; }
+.sticky-col { position: sticky; left: 0; background: white; z-index: 10; border-right: 1px solid #eee; min-width: 280px; text-align: left; padding: 12px; }
+
+/* Nested Subjects Styling (The Visual Connector) */
+.nested-wrapper { position: relative; padding-left: 20px; display: flex; align-items: center; }
+.dashed-line {
+  position: absolute;
+  left: 10px;
+  top: -30px;
+  bottom: 0;
+  width: 1px;
+  border-left: 1px dashed #ccc;
+}
+.nested-option-row:last-of-type .dashed-line { bottom: 50%; }
+.nested-content { display: flex; gap: 10px; align-items: flex-start; z-index: 2; background: white; }
+.branch-symbol { color: #aaa; margin-top: 2px; }
+.sub-name.small { font-size: 13px; color: #444; }
+
+/* Status Indicators */
+.status-cell { text-align: center; border-left: 1px solid #f9f9f9; padding: 10px; }
+.indicator {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+.indicator.verified { background: #d4f05c; color: black; font-weight: bold; }
+.indicator.empty { background: #f5f5f5; color: transparent; }
+
+.semester-divider td { background: #fbfbfb; font-weight: bold; padding: 10px 15px; color: #333; border-top: 1px solid #eee; }
+
+/* Table Layout */
+.ao-grid {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sticky-col {
+  position: sticky;
+  left: 0;
+  background: white;
+  z-index: 10;
+  border-right: 1px solid #f0f0f0 !important;
+  min-width: 300px;
+}
+
+/* Parent Row Styling */
+.elective-parent-row td {
+  background-color: #fcfcfc;
+}
+
+.parent-spacer-cell {
+  background: #fcfcfc;
+}
+
+/* Nested (Option) Rows */
+.nested-col {
+  padding: 0 !important; /* Required for the line alignment */
+}
+
+.nested-visual-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 25px; /* Space for line */
+}
+
+/* The Vertical Dashed Line */
+.dashed-line {
+  position: absolute;
+  left: 15px;
+  top: -25px; /* Reaches up into the parent row */
+  bottom: 0;
+  width: 1px;
+  border-left: 1px dashed #cccccc;
+}
+
+/* Cut the line at the middle of the last elective option */
+.nested-option-row:last-of-type .dashed-line {
+  bottom: 50%;
+}
+
+.nested-label-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  z-index: 2;
+  background: white; /* masks the line directly behind the arrow */
+}
+
+.branch-character {
+  color: #999;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.sub-name.small {
+  font-size: 13px;
+  font-weight: 500;
+  color: #444;
+}
+
+/* Status Circles */
+.indicator {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 12px;
+}
+
+.indicator.verified {
+  background: #d4f05c; /* Your signature lime color */
+  color: #000;
+  font-weight: bold;
+}
+
+.indicator.empty {
+  background: #f1f1f1;
+  color: transparent;
+}

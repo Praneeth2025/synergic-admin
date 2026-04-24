@@ -3,6 +3,8 @@ import AcademicOverview from './AcademicOverview';
 import DuplicateHandler from './DuplicateHandler';
 import Navbar from './Navbar';
 import './App.css';
+import Newsubject from './Newsubject';
+import SubjectManager from './SubjectManager';
 
 function App() {
   // 1. Centralized state to track the active view
@@ -16,10 +18,10 @@ function App() {
       <main className="content-area">
         {/* 3. Conditional Rendering based on the active tab */}
         {activeView === 'Dashboard' && <AcademicOverview />}
-        {activeView === 'Duplicate Papers' && <DuplicateHandler />}
+        {activeView === 'Upload Requests' && <DuplicateHandler />}
         
         {/* Placeholder for future sections */}
-        {activeView === 'Saved' && <div className="placeholder">Saved Items Coming Soon...</div>}
+        {activeView === 'Subject Management' && <SubjectManager />}
         {activeView === 'Contribute' && <div className="placeholder">Contribute Page Coming Soon...</div>}
       </main>
     </div>
