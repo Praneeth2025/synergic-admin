@@ -3,37 +3,45 @@ import axios from 'axios';
 import './SubjectManager.css';
 
 const SubjectManager = () => {
-  const [selectedBranch, setSelectedBranch] = useState("CSE");
-  const [selectedSemester, setSelectedSemester] = useState("chemistry-Semester");
+  // Metadata state
+  const [courseMetadata, setCourseMetadata] = useState(null);
+  
+  // Selection states
+  const [selectedCourse, setSelectedCourse] = useState("");
+  const [selectedBranch, setSelectedBranch] = useState("");
+  const [selectedSemester, setSelectedSemester] = useState("");
+  
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const branches = [
-    { id: "cse", label: "CSE", value: "CSE" },
-    { id: "ece", label: "ECE", value: "ECE" },
-    { id: "ee", label: "EE", value: "EE" },
-    { id: "mech", label: "Mechanical", value: "Mechanical" },
-    { id: "civil", label: "Civil", value: "Civil" },
-    { id: "met", label: "Metallurgy", value: "Metallurgy" },
-    { id: "ep", label: "Engineering Physics", value: "Engineering Physics" },
-  ];
+  // 1. Fetch metadata from the previous server on mount
+  useEffect(() => {
+    const fetchMetadata = async () => {
+      try {
+        const res = await axios.get("https://synergic-backend.onrender.com/course-metadata");
+        setCourseMetadata(res.data);
+        
+        // Set initial defaults based on metadata
+        const firstCourse = Object.keys(res.data)[0];
+        setSelectedCourse(firstCourse);
+        setSelectedBranch(res.data[firstCourse].branches[0]);
+        setSelectedSemester(res.data[firstCourse].semesters[0]);
+      } catch (err) {
+        console.error("Error fetching course metadata", err);
+      }
+    };
+    fetchMetadata();
+  }, []);
 
-  const semesters = [
-    { id: "s1", label: "Chemistry Sem", value: "chemistry-Semester" },
-    { id: "s2", label: "Physics Sem", value: "Physics-Semester" },
-    { id: "s3", label: "Semester 3", value: "Semester_3" },
-    { id: "s4", label: "Semester 4", value: "Semester_4" },
-    { id: "s5", label: "Semester 5", value: "Semester_5" },
-    { id: "s6", label: "Semester 6", value: "Semester_6" },
-    { id: "s7", label: "Semester 7", value: "Semester_7" },
-    { id: "s8", label: "Semester 8", value: "Semester_8" },
-  ];
-
+  // 2. Fetch subjects when Course, Branch, or Semester changes
   const fetchSubjects = async () => {
+    if (!selectedCourse || !selectedBranch || !selectedSemester) return;
+    
     setLoading(true);
     try {
-      const res = await axios.get(`https://admin-backend-c1q6.onrender.com/subjects/BTech/${selectedBranch}/${selectedSemester}`);
-      setSubjects(res.data);
+      const res = await axios.get(`https://admin-backend-c1q6.onrender.com/subjects/${selectedCourse}/${selectedBranch}/${selectedSemester}`);
+      // Ensure we set an array even if data is null/empty
+      setSubjects(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Error fetching subjects", err);
       setSubjects([]);
@@ -41,9 +49,20 @@ const SubjectManager = () => {
     setLoading(false);
   };
 
-  useEffect(() => { fetchSubjects(); }, [selectedBranch, selectedSemester]);
+  useEffect(() => { 
+    fetchSubjects(); 
+  }, [selectedCourse, selectedBranch, selectedSemester]);
 
-  // Handlers for Main Subjects
+  // Handle Course Change (Resets branch/semester to first available in new course)
+  const handleCourseChange = (courseKey) => {
+    setSelectedCourse(courseKey);
+    const firstBranch = courseMetadata[courseKey].branches[0];
+    const firstSem = courseMetadata[courseKey].semesters[0];
+    setSelectedBranch(firstBranch);
+    setSelectedSemester(firstSem);
+  };
+
+  // Subject Modification Handlers
   const handleSubjectChange = (index, field, value) => {
     const updated = [...subjects];
     updated[index][field] = value;
@@ -51,14 +70,13 @@ const SubjectManager = () => {
   };
 
   const addSubject = () => {
-    setSubjects([...subjects, { name: "", code: "", materials_available: 0 }]);
+    setSubjects([...subjects, { name: "", code: "", materials_available: 0, options: [] }]);
   };
 
   const removeSubject = (index) => {
     setSubjects(subjects.filter((_, i) => i !== index));
   };
 
-  // Handlers for Nested Options (Electives)
   const handleOptionChange = (subIdx, optIdx, field, value) => {
     const updated = [...subjects];
     updated[subIdx].options[optIdx][field] = value;
@@ -68,7 +86,6 @@ const SubjectManager = () => {
   const addOption = (subIdx) => {
     const updated = [...subjects];
     if (!updated[subIdx].options) updated[subIdx].options = [];
-    updated[subIdx].isNested = true;
     updated[subIdx].options.push({ name: "", code: "" });
     setSubjects(updated);
   };
@@ -76,14 +93,13 @@ const SubjectManager = () => {
   const removeOption = (subIdx, optIdx) => {
     const updated = [...subjects];
     updated[subIdx].options = updated[subIdx].options.filter((_, i) => i !== optIdx);
-    if (updated[subIdx].options.length === 0) updated[subIdx].isNested = false;
     setSubjects(updated);
   };
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`https://admin-backend-c1q6.onrender.com/update-subjects/BTech/${selectedBranch}/${selectedSemester}`, subjects);
-      alert("Success: Curriculum and Master List updated!");
+      await axios.put(`https://admin-backend-c1q6.onrender.com/update-subjects/${selectedCourse}/${selectedBranch}/${selectedSemester}`, subjects);
+      alert("Success: Curriculum updated!");
     } catch (err) {
       alert("Update failed");
     }
@@ -94,17 +110,31 @@ const SubjectManager = () => {
       <header className="manager-header">
         <h1>Curriculum Editor</h1>
         <div className="selectors">
-          <select value={selectedBranch} onChange={(e) => setSelectedBranch(e.target.value)}>
-            {branches.map(b => <option key={b.id} value={b.value}>{b.label}</option>)}
+          {/* Course Selector */}
+          <select value={selectedCourse} onChange={(e) => handleCourseChange(e.target.value)}>
+            {courseMetadata && Object.keys(courseMetadata).map(c => (
+              <option key={c} value={c}>{c}</option>
+            ))}
           </select>
+
+          {/* Branch Selector */}
+          <select value={selectedBranch} onChange={(e) => setSelectedBranch(e.target.value)}>
+            {courseMetadata && selectedCourse && courseMetadata[selectedCourse].branches.map(b => (
+              <option key={b} value={b}>{b}</option>
+            ))}
+          </select>
+
+          {/* Semester Selector */}
           <select value={selectedSemester} onChange={(e) => setSelectedSemester(e.target.value)}>
-            {semesters.map(s => <option key={s.id} value={s.value}>{s.label}</option>)}
+            {courseMetadata && selectedCourse && courseMetadata[selectedCourse].semesters.map(s => (
+              <option key={s} value={s}>{s.replace(/[-_]/g, ' ')}</option>
+            ))}
           </select>
         </div>
       </header>
 
       <div className="subject-list">
-        {loading ? <p>Loading...</p> : subjects.map((sub, idx) => (
+        {loading ? <div className="loading-spinner">Loading Subjects...</div> : subjects.map((sub, idx) => (
           <div key={idx} className="subject-card">
             <div className="subject-inputs">
               <input 
@@ -113,7 +143,7 @@ const SubjectManager = () => {
                 onChange={(e) => handleSubjectChange(idx, "name", e.target.value)} 
               />
               <input 
-                placeholder="Code (Leave empty for Electives)" 
+                placeholder="Code" 
                 value={sub.code} 
                 className="code-input"
                 onChange={(e) => handleSubjectChange(idx, "code", e.target.value)} 
@@ -121,7 +151,6 @@ const SubjectManager = () => {
               <button className="btn-delete" onClick={() => removeSubject(idx)}>×</button>
             </div>
 
-            {/* Nested Options Section */}
             <div className="options-container">
               {sub.options?.map((opt, optIdx) => (
                 <div key={optIdx} className="option-row">
@@ -139,7 +168,7 @@ const SubjectManager = () => {
                   <button className="btn-opt-delete" onClick={() => removeOption(idx, optIdx)}>×</button>
                 </div>
               ))}
-              <button className="btn-add-opt" onClick={() => addOption(idx)}>+ Add Option</button>
+              <button className="btn-add-opt" onClick={() => addOption(idx)}>+ Add Option (Elective)</button>
             </div>
           </div>
         ))}
@@ -147,7 +176,7 @@ const SubjectManager = () => {
 
       <footer className="manager-footer">
         <button className="btn-secondary" onClick={addSubject}>+ Add Main Subject</button>
-        <button className="btn-primary" onClick={handleUpdate}>Save Changes</button>
+        <button className="btn-primary" onClick={handleUpdate}>Save Curriculum</button>
       </footer>
     </div>
   );
